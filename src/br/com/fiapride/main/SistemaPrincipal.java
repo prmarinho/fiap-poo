@@ -1,28 +1,44 @@
 package br.com.fiapride.main;
 
-// Importamos a classe Passageiro para que o sistema a reconheça
 import br.com.fiapride.model.Carregador;
+import br.com.fiapride.model.Passageiro;
 
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
-        // INSTANCIAÇÃO
-        // O comando 'new' aloca memória para um novo objeto.
-        // Criando o primeiro passageiro (Objeto 1)
+
         Carregador carregador0 = new Carregador();
-        carregador0.potencia = 65;
-        carregador0.quantidadePortas = 1;
-
-        // Criando o segundo passageiro (Objeto 2)
         Carregador carregador1 = new Carregador();
-        carregador1.potencia = 125;
-        carregador1.quantidadePortas = 3;
 
-        // Exibindo os dados no Console
         System.out.println("--- Sistema FiapRide ---");
-        System.out.println("Carregador0: " + carregador0.potencia +"W" + " | Quantidade de Portas: " + carregador0.quantidadePortas);
-        System.out.println("Carregador1: " + carregador1.potencia +"W" + " | Quantidade de Portas: " + carregador1.quantidadePortas);
+        System.out.println("Carregador0: " + carregador0.getPotencia() +"W" + " | Quantidade de Portas: " + carregador0.getQuantidadePortas());
+        System.out.println("Carregador1: " + carregador1.getPotencia() +"W" + " | Quantidade de Portas: " + carregador1.getQuantidadePortas());
         
-        // Teste mental: Se eu mudar o nome do passageiro1, o passageiro2 muda?
+        System.out.println("\n--- Atualizando Carregadores via Métodos ---");
+        
+        carregador0.configurarPorCelular(25, "USB Power Delivery");
+        System.out.println("Carregador 0 reconfigurado | Nova Potência: " + carregador0.getPotencia() + "W | Protocolo: " + carregador0.getProtocoloCarregamento());
+
+        carregador1.validarParaUso(2, true);
+        System.out.println("Carregador 1 validado | Novas Portas: " + carregador1.getQuantidadePortas() + " | Certificado: " + carregador1.getCertificadoSeguranca());
+        System.out.println("-------------------------------------------\n");
+
+        Passageiro passageiro1 = new Passageiro("Ana Silva", "222");
+        System.out.println("Recarga passageiro 1");
+        passageiro1.adicionarSaldo(50.0);
+
+        Passageiro passageiro2 = new Passageiro("Carlos Souza", "333");
+        System.out.println("Recarga passageiro 2");
+        passageiro2.adicionarSaldo(12.5);
+
+        System.out.println("--- Sistema FiapRide ---");
+        System.out.println("Passageiro: " + passageiro1.nome + " | Saldo: R$ " + passageiro1.saldo + " | CPF: " + passageiro1.cpf);
+        System.out.println("Passageiro: " + passageiro2.nome + " | Saldo: R$ " + passageiro2.saldo + " | CPF: " + passageiro2.cpf);
+        
+        System.out.println("Pagando viagem do passageiro 1");
+        passageiro1.pagarViagem(20);
+        System.out.println("Pagando viagem do passageiro 2");
+        passageiro2.pagarViagem(20);
+        
     }
 }
