@@ -1,58 +1,81 @@
 package br.com.fiapride.model;
 
 public class Carregador {
-    // Atributos privados (Encapsulamento - representado pelo '-' no UML)
     private int potencia;
     private String protocoloCarregamento;
     private String tipoPorta;
     private int quantidadePortas;
     private String certificadoSeguranca;
 
-    // Construtor Padrão (Valores Iniciais)
     public Carregador() {
-        this.potencia = 10;
-        this.protocoloCarregamento = "Padrão USB";
-        this.tipoPorta = "USB-A";
-        this.quantidadePortas = 1;
-        this.certificadoSeguranca = "Anatel";
+        this.setPotencia(10);
+        this.setProtocoloCarregamento("Padrão USB");
+        this.setTipoPorta("USB-A");
+        this.setQuantidadePortas(1);
+        this.setCertificadoSeguranca("Anatel");
     }
 
-    // Método 1: Configura atributos com base na necessidade do celular
     public void configurarPorCelular(int potenciaMaxima, String protocolo) {
-        this.potencia = potenciaMaxima;
-        this.protocoloCarregamento = protocolo;
+        this.setPotencia(potenciaMaxima);
+        this.setProtocoloCarregamento(protocolo);
         if (potenciaMaxima > 20) {
-            this.tipoPorta = "USB-C";
+            this.setTipoPorta("USB-C");
         }
     }
 
-    // Método 2: Altera quantidade de portas e certificação conforme o perfil de uso
     public boolean validarParaUso(int qtdDispositivos, boolean precisaPortabilidade) {
-        this.quantidadePortas = qtdDispositivos;
+        this.setQuantidadePortas(qtdDispositivos);
         if (precisaPortabilidade) {
-            this.certificadoSeguranca = "Anatel (Selo GaN Compacto)";
+            this.setCertificadoSeguranca("Anatel (Selo GaN Compacto)");
         }
         return this.quantidadePortas >= qtdDispositivos;
     }
 
-    // Métodos Getters (para leitura dos atributos privados)
-    public int getPotencia() { 
-        return potencia; 
+    public int getPotencia() {
+        return this.potencia;
     }
 
-    public String getProtocoloCarregamento() { 
-        return protocoloCarregamento; 
+    private void setPotencia(int potencia) {
+        if (potencia > 0) {
+            this.potencia = potencia;
+        } else {
+            System.out.println("Erro: Potência inválida. O valor deve ser maior que zero.");
+        }
     }
 
-    public String getTipoPorta() { 
-        return tipoPorta; 
+    public String getProtocoloCarregamento() {
+        return this.protocoloCarregamento;
     }
 
-    public int getQuantidadePortas() { 
-        return quantidadePortas; 
+    private void setProtocoloCarregamento(String protocoloCarregamento) {
+        this.protocoloCarregamento = protocoloCarregamento;
     }
 
-    public String getCertificadoSeguranca() { 
-        return certificadoSeguranca; 
+    public String getTipoPorta() {
+        return this.tipoPorta;
+    }
+
+    private void setTipoPorta(String tipoPorta) {
+        this.tipoPorta = tipoPorta;
+    }
+
+    public int getQuantidadePortas() {
+        return this.quantidadePortas;
+    }
+
+    private void setQuantidadePortas(int quantidadePortas) {
+        if (quantidadePortas > 0) {
+            this.quantidadePortas = quantidadePortas;
+        } else {
+            System.out.println("Erro: Quantidade de portas inválida. O valor deve ser maior que zero.");
+        }
+    }
+
+    public String getCertificadoSeguranca() {
+        return this.certificadoSeguranca;
+    }
+
+    private void setCertificadoSeguranca(String certificadoSeguranca) {
+        this.certificadoSeguranca = certificadoSeguranca;
     }
 }

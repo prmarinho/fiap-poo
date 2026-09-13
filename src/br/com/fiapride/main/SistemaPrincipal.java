@@ -21,6 +21,9 @@ public class SistemaPrincipal {
 
         carregador1.validarParaUso(2, true);
         System.out.println("Carregador 1 validado | Novas Portas: " + carregador1.getQuantidadePortas() + " | Certificado: " + carregador1.getCertificadoSeguranca());
+
+        carregador0.configurarPorCelular(-10, "USB Power Delivery");
+        System.out.println("Carregador 0 após tentativa inválida | Potência mantida: " + carregador0.getPotencia() + "W");
         System.out.println("-------------------------------------------\n");
 
         Passageiro passageiro1 = new Passageiro("Ana Silva", "222");
@@ -32,8 +35,8 @@ public class SistemaPrincipal {
         passageiro2.adicionarSaldo(12.5);
 
         System.out.println("--- Sistema FiapRide ---");
-        System.out.println("Passageiro: " + passageiro1.nome + " | Saldo: R$ " + passageiro1.saldo + " | CPF: " + passageiro1.cpf);
-        System.out.println("Passageiro: " + passageiro2.nome + " | Saldo: R$ " + passageiro2.saldo + " | CPF: " + passageiro2.cpf);
+        System.out.println("Passageiro: " + passageiro1.getNome() + " | Saldo: R$ " + passageiro1.getSaldo() + " | CPF: " + passageiro1.getCpf());
+        System.out.println("Passageiro: " + passageiro2.getNome() + " | Saldo: R$ " + passageiro2.getSaldo() + " | CPF: " + passageiro2.getCpf());
         
         System.out.println("Pagando viagem do passageiro 1");
         passageiro1.pagarViagem(20);
